@@ -31,7 +31,7 @@ $totaal = $subtotaal + $btw;
 <head>
     <meta charset="UTF-8">
     <title>Winkelmand</title>
-    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="/domein-zoeker-minty-media/assets/css/style.css">
 </head>
 <body>
 

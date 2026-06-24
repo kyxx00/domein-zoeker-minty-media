@@ -11,7 +11,7 @@ $bestellingen = $stmt->fetchAll(PDO::FETCH_ASSOC);
 <head>
     <meta charset="UTF-8">
     <title>Bestellingen</title>
-    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="/domein-zoeker-minty-media/assets/css/style.css">
 </head>
 <body>
 
@@ -25,9 +25,8 @@ $bestellingen = $stmt->fetchAll(PDO::FETCH_ASSOC);
 <div class="container">
     <h1>Bestellingen</h1>
 
-    <!-- Succesmelding na plaatsen bestelling -->
     <?php if (isset($_GET['succes'])): ?>
-        <div class="melding succes">✔ Bestelling succesvol geplaatst!</div>
+        <div class="melding succes"> Bestelling succesvol geplaatst.</div>
     <?php endif; ?>
 
     <?php if (empty($bestellingen)): ?>
@@ -35,18 +34,17 @@ $bestellingen = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <?php else: ?>
 
     <?php foreach ($bestellingen as $bestelling): ?>
-        <div style="background:white; border:1px solid #ddd; padding:15px; margin-bottom:20px; border-radius:4px;">
+        <div class="winkelmand-info" style="margin-bottom:20px;">
             <p><strong>Bestelling #<?= $bestelling['id'] ?></strong> — <?= htmlspecialchars($bestelling['naam']) ?> (<?= htmlspecialchars($bestelling['email']) ?>)</p>
-            <p style="font-size:13px; color:#777;"><?= $bestelling['aangemaakt_op'] ?></p>
+            <p style="font-size:13px; color:#555; margin-top:4px;"><?= $bestelling['aangemaakt_op'] ?></p>
 
-            <!-- Domeinen van deze bestelling ophalen -->
             <?php
             $stmt2 = $pdo->prepare("SELECT * FROM bestelling_domeinen WHERE bestelling_id = ?");
             $stmt2->execute([$bestelling['id']]);
             $domeinen = $stmt2->fetchAll(PDO::FETCH_ASSOC);
             ?>
 
-            <table style="margin-top:10px;">
+            <table style="margin-top:12px;">
                 <thead>
                     <tr>
                         <th>Domein</th>
@@ -63,8 +61,7 @@ $bestellingen = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 </tbody>
             </table>
 
-            <!-- Prijsoverzicht per bestelling -->
-            <div style="margin-top:10px; font-size:14px;">
+            <div style="margin-top:12px;">
                 <p>Subtotaal: €<?= number_format($bestelling['subtotaal'], 2, ',', '.') ?></p>
                 <p>BTW (21%): €<?= number_format($bestelling['btw'], 2, ',', '.') ?></p>
                 <p><strong>Totaal: €<?= number_format($bestelling['totaal'], 2, ',', '.') ?></strong></p>

@@ -41,12 +41,12 @@ if (isset($_POST['toevoegen'])) {
 <head>
     <meta charset="UTF-8">
     <title>Domein Zoeker</title>
-    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="/domein-zoeker-minty-media/assets/css/style.css">
 </head>
 <body>
 
 <nav>
-    <span>Domein Zoeker</span>
+    <span class="logo">Domein Zoeker</span>
     <a href="index.php">Zoeken</a>
     <a href="pages/winkelmand.php">Winkelmand (<?= isset($_SESSION['winkelmand']) ? count($_SESSION['winkelmand']) : 0 ?>)</a>
     <a href="pages/bestellingen.php">Bestellingen</a>
@@ -85,7 +85,6 @@ if (isset($_POST['toevoegen'])) {
                 </td>
                 <td>€<?= number_format($r['price'], 2, ',', '.') ?>/jaar</td>
                 <td>
-                    <!-- Alleen toevoegen als het domein vrij is -->
                     <?php if ($r['status'] === 'free'): ?>
                         <form method="POST" action="index.php">
                             <input type="hidden" name="toevoegen" value="1">

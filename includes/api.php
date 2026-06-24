@@ -28,5 +28,12 @@ function zoekDomeinen($naam, $extensies) {
     $response = curl_exec($ch);
     curl_close($ch);
 
-    return json_decode($response, true);
+    $result = json_decode($response, true);
+
+    // Prijs uit de geneste array halen
+    foreach ($result as &$item) {
+        $item['price'] = $item['price']['product']['price'];
+    }
+
+    return $result;
 }

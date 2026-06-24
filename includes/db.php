@@ -1,6 +1,6 @@
 <?php
 // Database gegevens
-$host = "domein-zoeker";
+$host = "localhost";
 $dbname = "domein_zoeker";
 $user = "root";
 $pass = "";
