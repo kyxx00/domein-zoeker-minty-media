@@ -105,11 +105,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['bestel'])) {
     <form method="POST" action="checkout.php">
         <div class="form-groep">
             <label for="naam">Naam:</label>
-            <input type="text" id="naam" name="naam" placeholder="Jan Jansen" required>
+            <input type="text" id="naam" name="naam" placeholder="Jack Jones" required>
         </div>
         <div class="form-groep">
             <label for="email">E-mailadres:</label>
-            <input type="email" id="email" name="email" placeholder="jan@voorbeeld.nl" required>
+            <input type="email" id="email" name="email" placeholder="jack@voorbeeld.nl" required>
         </div>
         <button type="submit" name="bestel" class="btn-bestel">Bestelling plaatsen</button>
     </form>
